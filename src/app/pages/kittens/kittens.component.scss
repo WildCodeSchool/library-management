@@ -1,0 +1,164 @@
+@use "../../../import";
+
+:root {
+    --list-CardsContainer-bg-color: white;
+    --list-CardsContainer-bx-Shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    --grid-areas: .1px dotted #4e59ae;
+    --main-grid-areas-items: .1px dotted #ccc;
+    --main-grid-areas-items-container: .1px dotted #ccc;
+    --main-grid-areas-items-cards-container: .1px dotted #ccc;
+    --main-grid-areas-items-container-hover: .1px dotted #ccc;
+
+    --main-grid-container-border: var(--body-sections);
+    --grid-itemList: var(--grid-areas);
+    --grid-itemList-CardsContainer-boder: var(--main-grid-areas-items);
+    --grid-itemList-CardContainer: var(--main-grid-areas-items-container);
+    --grid-itemList-CardContainer-hover: var(--main-grid-areas-items-container-hover);
+
+    --footer: var(--body-sections);
+
+}
+
+.main-grid-container {
+    text-align: center;
+    background-color: var(--body-HeaderMainFooter-bg);
+    padding: 0;
+    margin: 0;
+
+    border: var(--main-grid-container-border);
+
+    .grid-itemList {
+        box-shadow: var(--global-bsdw-color);
+        border-radius: 10px;
+
+        .grid-itemList-CardsContainer {
+            border-radius: 10px;
+            background-color: var(--list-CardsContainer-bg-color);
+
+            .grid-itemList-CardContainer {
+                border-radius: 10px;
+                background-color: var(--list-CardsContainer-bg-color);
+                box-shadow: var(--list-CardsContainer-bx-Shadow);
+            }
+        }
+
+        .grid-itemList-CardContainer:hover {
+            width: 22rem;
+            height: fit-content;
+            box-shadow: var(--global-bsdw-color);
+            transition: all 1s linear;
+            border: var(--grid-itemList-CardContainer-hover);
+        }
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .main-grid-container {
+        display: grid;
+        grid-template-areas:
+            'list'
+            'user'
+            'form';
+        padding: .1rem;
+        margin: .1rem;
+
+        .grid-itemList {
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            align-items: center;
+            justify-content: center;
+
+            .grid-itemList-CardsContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .grid-itemList-CardContainer {
+                padding: .5px;
+                width: 100%;
+                max-width: 22rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 601px) and (max-width: 992px) {
+    .main-grid-container {
+        display: grid;
+        grid-template-areas:
+            'list'
+            'user'
+            'form';
+
+        .grid-itemList {
+            padding: .5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+            .grid-itemList-CardsContainer {
+                grid-area: list;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                align-items: center;
+                justify-items: center;
+                position: relative;
+                width: 100%;
+
+                .grid-itemList-CardContainer {
+                    padding: .5px;
+                    width: 100%;
+                    max-width: 22rem;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+    .main-grid-container {
+        display: grid;
+        grid-template-areas:
+            'list list user'
+            'list list user'
+            'form form user';
+
+        border: 5px solid green;
+
+        .grid-itemList {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+
+            border: 5px solid yellowgreen;
+
+            .grid-itemList-CardsContainer {
+                grid-area: list;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                align-items: center;
+                justify-items: center;
+                position: relative;
+                width: 100%;
+
+                .grid-itemList-CardContainer {
+                    width: 100%;
+                    max-width: 30rem;
+
+                    border: 5px solid dodgerblue;
+                }
+            }
+        }
+    }
+}
